@@ -2,4 +2,18 @@
     background-color: #444444;
     width: 1280px;
     height: 720px;
+    position: relative;
+}
+
+.video {
+}
+
+.title {
+    color: black;
+    position: absolute;
+}
+
+.button {
+    position: absolute;
+    z-index: 5;
 }
