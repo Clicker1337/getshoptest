@@ -14,7 +14,7 @@ const Banner = ({onButtonClick}: BannerProps) => {
     return (
         <div className={s.banner}>
             <div className={s.content}>
-                <h1>ИСПОЛНИТЕ МЕЧТУ ВАШЕГО МАЛЫША, ПОДАРИТЕ ЕМУ СОБАКУ</h1>
+                <h1 className={s.title}>ИСПОЛНИТЕ МЕЧТУ ВАШЕГО МАЛЫША, ПОДАРИТЕ ЕМУ СОБАКУ</h1>
                 <img src={image}></img>
                 <p>Сканируйте QR-код или нажмите ОК</p>
                 <button className={s.button} onClick={togglePlay}>ОК</button>
