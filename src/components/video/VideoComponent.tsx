@@ -2,6 +2,8 @@ import s from './VideoComponent.module.scss'
 import video from '../../assets/videos/Volvo Trucks - The Epic Split feat. Van Damme (Live Test).mp4'
 import {useEffect, useRef} from 'react'
 
+const TIME_UPDATE = "timeupdate"
+
 interface VideoComponentProps {
     isPlaying: boolean;
     onTimeChange: (newData: number) => void;
@@ -14,18 +16,22 @@ const VideoComponent = ({isPlaying, onTimeChange}: VideoComponentProps) => {
 
     useEffect(() => {
         if (videoRef.current) {
-            videoRef.current.addEventListener("timeupdate", handleTimeUpdate);
+            videoRef.current.addEventListener(TIME_UPDATE, handleTimeUpdate);
         }
         return () => {
             if (videoRef.current) {
-                videoRef.current.removeEventListener("timeupdate", handleTimeUpdate);
+                videoRef.current.removeEventListener(TIME_UPDATE, handleTimeUpdate);
             }
         };
     }, []);
 
     const handleTimeUpdate = () => {
         if (videoRef.current) {
-            onTimeChange(Math.floor(videoRef.current.currentTime));
+            const seconds = Math.floor(videoRef.current.currentTime)
+            onTimeChange(seconds);
+            if (seconds > 5) {
+                videoRef.current.removeEventListener(TIME_UPDATE, handleTimeUpdate);
+            }
         }
     };
 
