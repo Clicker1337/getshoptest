@@ -19,8 +19,8 @@ function App() {
     return (
         <>
             <div className={s.container}>
-                {timer >= 5 ? <Banner onButtonClick={togglePlay} /> : <div />}
-                <Panel />
+                {isPlaying && timer >= 5 ? <Banner onButtonClick={togglePlay} /> : <div />}
+                {!isPlaying && <Panel onButtonClick={togglePlay} />}
                 <VideoComponent
                     isPlaying={isPlaying}
                     onTimeChange={handleTimeChange}
